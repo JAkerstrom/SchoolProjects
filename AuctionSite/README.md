@@ -13,5 +13,5 @@ In this project I also tried out cashing.
 
 #Techniques used:
 
-.Net Core 2.0, Asp.Net.Identity,
+.Net Core 2.0, Xunit, Asp.Net.Identity,
 Javascript, Charts.js
