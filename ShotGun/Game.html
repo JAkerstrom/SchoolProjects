@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Shotgun</title>
+        <script src="gameLogic.js" defer ></script>
+        <link rel="stylesheet" type="text/css" href="Styles.css">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </head>
+    <body bgcolor="black">
+        <div class="container-fluid grey" style="height: 100vh; padding: 60px;">
+            <div class="card h-100 w-100 m-b-2">
+                <div class="card-header">
+                    <h1>Shotgun!</h1>
+                </div>
+                <div class="card-body">
+                    <button id="startbutton" class="btn btn-dark center-btn">New game!</button>
+                    
+                    <div class="row h-50">
+                        <div id="playerContainer" class="col mx-2 h-100 float-left border border-secondary rounded playerContainer">
+                            <h2>player</h2>
+                            <table>
+                                <th>
+                                    <tr>
+                                        <td><h3 id="player">Antal skott:</h3></td>
+                                        <td><h3 id="playerAntalSkott">0</h3></td>
+                                    </tr>
+                                </th>
+                            </table>
+                        </div>
+                        <div id="computerContainer" class="col mx-2 h-100 float-right border border-secondary rounded playerContainer">
+                            <h2>Dator</h2>
+                            <table>
+                                <th>
+                                    <tr>
+                                        <td><h3 id="dator">Antal skott:</h3></td>
+                                        <td><h3 id="datorAntalSkott">0</h3></td>
+                                    </tr>
+                                </th>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="bottomContainer" class="row mt-2">
+                        <div class="col">
+                            <button id="laddaBtn" class="btn btn-outline-info mx-1" class="gameBtn">Ladda</button>
+                            <button id="blockBtn" class="btn btn-outline-info mx-1" class="gameBtn">Blocka</button>
+                            <button id="skjutBtn" class="btn btn-outline-info mx-1" class="gameBtn">Skjut</button>
+                            <button id="shotgunBtn" class="btn btn-outline-info mx-1" class="gameBtn">SHOTGUN!</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="computerStatusBar" class="playerContainer w-75 h-25">
+                            <h2 id="datorMove"></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

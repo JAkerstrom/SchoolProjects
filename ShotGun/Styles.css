@@ -1,0 +1,65 @@
+
+#datorAntalSkott{
+    font-size: 75%; 
+}
+#playerAntalSkott{
+    font-size: 75%;
+}
+#dator{
+    font-size: 75%;
+}
+#player{
+    font-size: 75%;
+}
+.container{
+    width:80%;
+    height:100vh;
+    margin: 0 auto;
+    text-align: center;
+}
+.grey{
+    background-color: grey;
+}
+.white{
+    background-color: white;
+}
+.containerSmall{
+    width: 80%;
+    height: 60vh;
+    text-align: center;
+    margin: 0 auto;
+    border-color: black;
+    border-style: solid;
+}
+.playerContainer{
+    text-align: center;
+    display: none;
+}
+
+.center-btn {
+  position: absolute;
+  left: 42%;
+  top: 50%; 
+}
+
+#bottomContainer{
+    width: 70%;
+    height: 20vh;
+    text-align: center;
+    float: center;
+    margin: auto;
+    display: none;
+}
+
+#skjutBtn{
+    display:none;
+}
+#shotgunBtn{
+    display: none;
+}
+#computerStatusBar{
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    color: blue;
+}
