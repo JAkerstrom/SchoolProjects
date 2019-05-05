@@ -9,5 +9,7 @@ of the order to tell the customer view of the order progress.
 #Techniques used:
 
 .Net Core 2.0,
-Javascript
+Javascript,
+SignalR,
+Bootstrap
 
