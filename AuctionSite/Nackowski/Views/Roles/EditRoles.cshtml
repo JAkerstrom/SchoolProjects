@@ -1,0 +1,40 @@
+﻿@model Nackowski.Models.Roles.EditRolesVM
+
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 offset-md-3 mb-4 mt-4 pr-4">
+        <h2>Hantera Användarroller</h2>
+    </div>
+    <div class="col-sm-12 col-md-6 offset-md-3 mb-4 mt-4">
+        <div class="card p-4">
+            <form class="col-sm-12" asp-controller="Roles" asp-action="Edit" method="post">
+                <hr />
+                <div class="col-sm-12 form-group">
+                    <label asp-for="user.UserName">Användare: @Model.user.UserName</label>
+                    <input type="hidden" asp-for="user.UserName" />
+                    <input type="hidden" asp-for="user.SecurityStamp" />
+                    <input type="hidden" asp-for="user.Roles" />
+
+                </div>
+
+                    <div class="col-sm-6 pull-left form-group mb-12" style="padding-bottom: 100px;">
+                        <label>Markera roller för användaren</label>
+                    </div>
+                    <div class="col-sm-6 pull-right form-group">
+                        <select asp-for="userRoles" asp-items="Model.AvailableRolesSelect"></select>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-default pull-right">Save</button>
+
+                
+            </form>
+            
+            <a class="col-sm-12 nav-link pull-left" asp-controller="Roles" asp-action="Index">Tillbaka</a>
+          
+        </div>
+    </div>
+
+</div>
+

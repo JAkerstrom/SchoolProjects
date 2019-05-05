@@ -1,0 +1,80 @@
+﻿@model List<Nackowski.Models.Charts.Month>
+
+
+<div class="row mt-sm-4">
+    <div class="col-sm-12">
+        <div class="col-sm-6 pull-left">
+            <h3 id="header">Statistik</h3>
+            <p class="lead">Prisjämförelse - ökning i procent mellan utropspris och slutpris.</p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="col-sm-12 col-md-9 pull-left">
+        <div id="startDiv">
+            @{
+
+                await Html.RenderPartialAsync("_StackedPartial", Model);
+
+            }
+
+        </div>
+        <div id="SearchResultDIV"></div>
+    </div>
+
+    <div class="col-sm-12 col-md-3 pull-right">
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action" onclick="GetMonths(0, 12)">Senaste året</a>
+            <a class="list-group-item list-group-item-action" onclick="GetMonths(0, 3)">Januari - Mars</a>
+            <a class="list-group-item list-group-item-action" onclick="GetMonths(3, 3)">April - Juni</a>
+            <a class="list-group-item list-group-item-action" onclick="GetMonths(6, 3)">Juli - September</a>
+            <a class="list-group-item list-group-item-action" onclick="GetMonths(9, 3)">Oktober - December</a>
+        </div>
+        <div class="form-group pt-2">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="userCheckbox">
+                <label class="form-check-label" for="exampleCheck1">Visa resultat för mina auktioner</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script defer>
+
+    var GetMonths = function (startMonth, amount) {
+        
+        $("#startDiv").remove();
+
+        if ($('#userCheckbox').is(":checked")) {
+            $.ajax({
+                type: "get",
+                url: "/Charts/GetUserMonths",
+                data: {
+                    startMonth: startMonth,
+                    amount: amount
+                },
+                success: function (result) {
+                    $("#SearchResultDIV").html(result);
+                }
+            });
+        } else {
+            $.ajax({
+                type: "get",
+                url: "/Charts/GetMonths",
+                data: {
+                    startMonth: startMonth,
+                    amount: amount
+                },
+                success: function (result) {
+                    $("#SearchResultDIV").html(result);
+                }
+            });
+        }
+
+
+    };
+
+</script>

@@ -1,0 +1,53 @@
+﻿@model List<Nackowski.Models.Roles.UserVM>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-body">
+            <div class="card-title">
+                <h3 class="col-sm-12">Hantera användarroller</h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Användarnamn</th>
+                        <th scope="col">Roller</th>
+                        <th scope="col">Ändra roller</th>
+                        <th scope="col">Radera användaren</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <th scope="row"></th>
+                            <td>@user.UserName</td>
+                            <td>@foreach (var role in user.Roles)
+                            {<p>@role</p>}</td>
+                            <td>
+                                <form asp-controller="Roles" asp-action="EditRoles" method="post" asp-route-userName="@user.UserName">
+                                    <input type="submit" value="Redigera roller" />
+                                </form>
+                            </td>
+                            <td>
+
+                                <form asp-controller="Roles" asp-action="DeleteUser" method="post" asp-route-userName="@user.UserName">
+                                    <input type="submit" value="Ta bort användare" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+

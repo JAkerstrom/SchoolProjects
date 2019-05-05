@@ -1,0 +1,142 @@
+﻿@model Nackowski.Models.API_ViewModels.AuktionVM
+
+@{
+    var todaysDate = DateTime.Now;
+    var isOpen = Model.SlutDatum > todaysDate;
+    var daysLeft = (Model.SlutDatum - todaysDate).Days;
+    var highestBid = 0;
+    ViewBag.highestBid = highestBid;
+
+    if (Model.Bud != null && !(Model.Bud.Count() == 0))
+    {
+        highestBid = Model.Bud.Max(b => b.Summa);
+    }
+}
+
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-9 offset-md-2 mb-4 mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="col-sm-8 pull-left">@Model.Titel</h4>
+                <div class="col-sm-4 pull-right">
+                    @if (isOpen)
+                    {
+                        <span class="badge badge-primary pull-right mt-2">@daysLeft Dagar kvar</span>
+                    }
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6 pull-left mb-1">
+                        <p class="card-text">@Model.Beskrivning</p>
+                    </div>
+                    <div class="col-sm-6 pull-right">
+                        <div class="row">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><p class="card-text">Start: </p></td>
+                                        <td><p class="card-text">@Model.StartDatum</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p class="card-text">Slut: </p></td>
+                                        <td><p class="card-text">@Model.SlutDatum</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Högsta bud:</td>
+                                        <td>@highestBid kr</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Antal bud:</td>
+                                        <td>
+                                            @if (Model.Bud.Count > 0 && Model.Bud != null)
+                                            {
+                                                <p>@Model.Bud.Count()</p>
+                                            }
+                                            else
+                                            {
+                                                <strong>Inga bud!</strong>
+                                            }
+                                        </td>
+                                    </tr>
+                                    @if (isOpen)
+                                    {
+                                        <tr>
+                                            <td colspan="2">
+                                                <a asp-controller="Home" asp-action="PostBud" asp-route-id="@Model.AuktionID" class="card-link">
+                                                    Lägg bud
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        @if (User.IsInRole("Admin") && User.Identity.Name == Model.SkapadAv)
+                                        {
+                                            <td>
+                                                <a asp-controller="Admin" asp-action="UpdateAuktion" asp-route-id="@Model.AuktionID" class="card-link">
+                                                    Uppdatera
+                                                </a>
+                                            </td>
+                                        }
+                                        @if (User.IsInRole("Admin") && Model.Bud.Count < 1 && User.Identity.Name == Model.SkapadAv)
+                                        {
+
+                                            <td>
+                                                <a asp-controller="Admin" asp-action="Delete" asp-route-auktionId="@Model.AuktionID" class="card-link">
+                                                    Radera
+                                                </a>
+                                            </td>
+                                        }
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a class="nav-link pull-left" asp-controller="Home" asp-action="Auktions">Tillbaka</a>
+                    </div>
+                </div>
+                <div class="col-sm-4 pull-left">
+                    @if (Model.Bud.Count() != 0 && isOpen)
+                    {
+                        <table>
+                            <tr>
+                                <th class="text-center" colspan="2">Tidigare bud </th>
+                            </tr>
+                            <tr>
+                                <th>Budgivare</th>
+                                <th>Summa</th>
+                            </tr>
+                            @foreach (var bud in Model.Bud)
+                            {
+                                <tr>
+                                    <td class="pr-2">@bud.Budgivare</td>
+                                    <td>@bud.Summa kr</td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                    else if (Model.Bud.Count() != 0 && !isOpen)
+                    {
+                        <table>
+                            <tr>
+                                <th class="text-center" colspan="2">Vinnande bud </th>
+                            </tr>
+                            <tr>
+                                <td>@highestBid kr</td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

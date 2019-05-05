@@ -1,0 +1,36 @@
+﻿@model List<Nackowski.Models.API_ViewModels.AuktionVM>
+
+<div class="jumbotron">
+    <h1 class="display-4">Köp och sälj dina saker hos oss!</h1>
+    <p class="lead">Registrera dig enkelt och kom igång, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-controller="Account" asp-action="Register" role="button">Skapa konto</a>
+    </p>
+</div>
+
+<div class="container-fluid">
+    @{
+        var auktions = Model.Take(6);
+
+        foreach (var auktion in auktions)
+        {
+            <div class="col-sm-12 col-md-4 pull-right">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@auktion.Titel</h5>
+                        <p class="card-text">@auktion.Beskrivning</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+</div>
+
+
+
+
+
+
+

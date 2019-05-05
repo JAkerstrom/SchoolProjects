@@ -1,0 +1,87 @@
+﻿@model List<Nackowski.Models.API_ViewModels.AuktionVM>
+
+<div class="row mt-sm-4">
+    <div class="col-sm-12">
+        <div class="col-sm-6 pull-left">
+            <h3 id="header">Pågående auktioner</h3>
+            <p class="lead">Klicka för att se mer information</p>
+
+        </div>
+        <div class="col-sm-6 pull-right pt-4">
+            <div class="form-inline pull-right">
+                <label class="sr-only">Sök</label>
+                <input id="searchInput" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0">
+                <button id="searchBtn" type="submit" onclick="Search()" class="btn btn-primary">Sök</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-12 col-md-9 pull-left">
+        <div id="startDiv">
+            @{
+
+                await Html.RenderPartialAsync("_AuktionsResultView", Model);
+
+            }
+
+        </div>
+        <div id="SearchResultDIV"></div>
+    </div>
+
+    <div class="col-sm-12 col-md-3 pull-right">
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action" onclick="Sort('isOpen')">Pågående auktioner</a>
+            <a class="list-group-item list-group-item-action" onclick="Sort('all')">Alla auktioner</a>
+            <a class="list-group-item list-group-item-action" onclick="Sort('endDate')">Slutdatum</a>
+            <a class="list-group-item list-group-item-action" onclick="Sort('startDate')">Startdatum</a>
+            <a class="list-group-item list-group-item-action" onclick="Sort('price')">Pris</a>
+        </div>
+    </div>
+</div>
+
+
+
+    <script defer>
+        var Search = function () {
+            var searchString = $("#searchInput").val();
+            $("#startDiv").hide();
+            $.ajax({
+                type: "post",
+                url: "/Home/Search",
+                data: { searchString: searchString },
+                success: function (result) {
+                    $("#SearchResultDIV").html(result);
+                }
+            });
+        };
+
+        var Sort = function (method) {
+            var searchString = "";
+
+            if ($("#searchInput").val().length === 0) {
+                searchString = "empty";
+            } else {
+                searchString = $("#searchInput").val();
+            }
+            
+            $("#startDiv").hide();
+            $("#header").html("Resultat");
+            $.ajax({
+                type: "get",
+                url: "/Home/SortedAuktions",
+                data: { method: method },
+                success: function (result) {
+                    $("#SearchResultDIV").html(result);
+                }
+            });
+        };
+
+    </script>
+
+
+
+
+
+

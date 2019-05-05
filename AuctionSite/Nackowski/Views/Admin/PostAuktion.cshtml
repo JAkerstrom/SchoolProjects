@@ -1,0 +1,66 @@
+﻿@model Nackowski.Models.API_ViewModels.AuktionVM
+
+
+
+    <div class="row">
+        <div class="col-sm-12 col-md-9 offset-md-2 mb-4 mt-4">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Skapa Auktion</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Admin" asp-action="PostAuktion" method="post">
+                        <div class="mb-4">
+                            <div class="col-sm-6 pull-left">
+                                <div class="form-group row">
+                                    <label class="col-12 col-form-label" asp-for="Titel"></label>
+
+                                    <div class="col-12">
+                                        <input class="form-control" asp-for="Titel" />
+                                        <span asp-validation-for="Titel"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-12 col-form-label" asp-for="Beskrivning"></label>
+
+                                    <div class="col-12">
+                                        <textarea class="form-control" rows="10" cols="30" type="text" asp-for="Beskrivning"></textarea>
+                                        <span asp-validation-for="Beskrivning"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 pull-right">
+                                <div class="form-group row">
+                                    <label class="col-12 col-form-label" asp-for="Utropspris"></label>
+                                    <div class="col-12">
+                                        <input class="form-control" asp-for="Utropspris" />
+                                        <span asp-validation-for="Utropspris"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-12 col-form-label" value="@ViewBag.Date" asp-for="StartDatum"></label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="datetime-local" asp-for="StartDatum" />
+                                        <span asp-validation-for="StartDatum"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-12 col-form-label" asp-for="SlutDatum"></label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="datetime-local" asp-for="SlutDatum" />
+                                        <span asp-validation-for="SlutDatum"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-success pull-right">Submit</button>
+                        </div>
+                    </form>
+                </div>                
+            </div>
+        </div>
+    </div>
+

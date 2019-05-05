@@ -1,0 +1,102 @@
+﻿@model Nackowski.Models.API_ViewModels.BudVM
+
+@{
+    var highestBid = @ViewBag.highestBid;
+    var auktionId = Model.AuktionID;
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-7 offset-md-2 mb-4 mt-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2>Lägg ett bud</h2>
+                <p>AuktionID: </p><p id="auktionId">@Model.AuktionID</p><br />
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <span id="responseLbl"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                        <label class="col-12 col-form-label">Summa</label>
+                        <div class="col-12">
+                            <input id="SummaInput" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <p>Högsta nuvarande bud: </p><p id="highestBid">@ViewBag.highestBid</p>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <form asp-controller="Home" asp-action="AuktionDetails" asp-route-Id="@Model.AuktionID" class="mt-4 pull-left">
+                            <input class="btn btn-primary" type="submit" value="tillbaka" />
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-12 mt-4">
+                            <a onclick="Evaluate()" class="btn btn-success pull-right">Skicka Bud</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        @*<% --used for ajax in AddAntiForgeryToken()-- %>*@
+<form id="__AjaxAntiForgeryForm" action="#" method="post">@Html.AntiForgeryToken()</form>
+
+
+
+
+<script defer>
+
+
+    var AddAntiForgeryToken = function (data) {
+        data.__RequestVerificationToken = $('#__AjaxAntiForgeryForm input[name=__RequestVerificationToken]').val();
+        return data;
+    };
+
+    var Evaluate = function () {
+        if ($('#SummaInput').val() === '' || !$.isNumeric($('#SummaInput').val()) || $('#SummaInput').val() === 0) {
+
+            $("#responseLbl").html("<p>Ange en summa</p>");
+            return false;
+        }
+        var highestBid = parseInt($("#highestBid").text(), 10);
+        var currentBid = parseInt($("#SummaInput").val(), 10);
+        var auktionId = $("#auktionId").text();
+
+
+
+        if (highestBid >= currentBid) {
+            $("#responseLbl").html("<p>budet är för lågt, det måste vara högre än " + highestBid + " kr</p>");
+            return false;
+        } else {
+            $("#responseLbl").html("Budet sparas");
+
+            $.ajax({
+                type: "post",
+                url: "/Home/Post",
+                data: AddAntiForgeryToken({
+                    id: parseInt($(this).attr("title")),
+                    auktionId: auktionId,
+                    summa: currentBid
+                })
+
+            });
+        }
+
+    };
+
+
+
+</script>
+
+

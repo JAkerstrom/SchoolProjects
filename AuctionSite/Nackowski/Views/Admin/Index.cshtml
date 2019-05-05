@@ -1,0 +1,26 @@
+﻿@*@model List<Nackowski.Models.Roles.UserVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+<h2>Registrerade användare</h2>
+
+@foreach (var user in Model)
+{
+    @user.UserName
+    
+
+    <form asp-controller="Admin" asp-action="EditRoles" method="post" asp-route-userName="@user.UserName">
+        <input type="submit" value="Redigera roller"/>
+    </form>
+
+    <form asp-controller="Admin" asp-action="DeleteUser" method="post" asp-route-userName="@user.UserName">
+        <input type="submit" value="Ta bort användare"/>
+    </form>
+
+}*@
+
+
