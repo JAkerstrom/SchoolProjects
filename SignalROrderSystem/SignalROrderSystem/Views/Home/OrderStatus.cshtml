@@ -1,0 +1,55 @@
+﻿@model Order
+
+<h2>OrderStatus</h2>
+
+<div class="row">
+    <div class="panel panel-warning">
+        <div class="panel-heading text-center">Orderstatus..</div>
+        <div class="panel-body">
+
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-left">
+                        <div class="col-sm-12">
+                            <h4 class="pull-left" id="itemid">@Model.Item.Id</h4>
+                            <h4>@Model.Item.Name</h4>
+                            <h4 id="orderid">@Model.OrderId</h4>
+                        </div>
+                        <div class="col-sm-12"><p>@Model.Item.Description -@Model.Item.Price kr</p></div>
+                    </div>
+                    <div class="pull-right">
+                        <div><h4>@Model.Name</h4></div>
+                        <div><h4>@Model.PhoneNumber</h4></div>
+                    </div>
+                    <div class="col-sm-12">
+                        @if (@Model.status == 1)
+                        {
+                            <h3 class="pull-right" id="orderprogress">We are working on your order</h3>
+                        }
+                        else if (@Model.status == 2)
+                        {
+                            <h3 class="pull-right" id="orderprogress">Your order is finnished and is waiting for pickup</h3>
+                        }
+                        else if (@Model.status == 3)
+                        {
+                            <h3 class="pull-right" id="orderprogress">Your order has left the kitchen</h3>
+                        }
+                        else
+                        {
+                            <h3 class="pull-right" id="orderprogress">We have received your order</h3>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/orderstatus.js"></script>

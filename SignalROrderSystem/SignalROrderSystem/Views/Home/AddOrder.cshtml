@@ -1,0 +1,40 @@
+﻿@model AddOrderModel
+
+<div class="row">
+    <div class="panel panel-warning">
+        <div class="panel-heading text-center">Add Order..</div>
+        <div class="panel-body">
+
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-left">
+                        <div class="col-sm-12">
+                            <h4 class="pull-left" id="itemid">@Model.Item.Id</h4>
+                            <h4>@Model.Item.Name</h4>
+                        </div>
+                        <div class="col-sm-12"><p>@Model.Item.Description -@Model.Item.Price kr</p></div>
+                    </div>
+                    <div class="pull-right">
+                        <form asp-action="AddOrder" asp-controller="Home" method="post" class="input-group">
+                            <input type="hidden" asp-for="Order.ItemId"/>
+                            <div class="col-sm-4"><input asp-for="Order.Name" type="text" placeholder="Your name.." class="form-control" id="name" /></div>
+                            <div class="col-sm-4"><input asp-for="Order.PhoneNumber" type="text" placeholder="Your phonenumber.." class="form-control" id="phonenumber" /></div>
+                            <div class="col-sm-4"><input type="submit" value="Beställ" class="btn btn-default" id="addorder" /></div>
+                        </form>
+                    </div>
+                    <div class="col-sm-12">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+

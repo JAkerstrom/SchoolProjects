@@ -1,0 +1,67 @@
+﻿@model List<Order>
+
+
+<div class="row">
+    <div class="panel panel-warning">
+        <div class="panel-heading text-center">
+            Orders        
+        </div>
+        <div class="panel-body" id="orderlist">
+            @foreach (var item in Model)
+            {
+                <div class="panel panel-default" id="parentDiv">
+                    <div class="panel-body">
+                        <div class="pull-left col-sm-4">
+                            <div class="col-sm-12"><p>Produktid: @item.Item.Id</p></div>
+                            <div class="com-sm-12"><p>Namn: @item.Name</p></div>
+                            <div class="com-sm-12"><p>Tel: @item.PhoneNumber</p></div>
+                        </div>
+                        <div class="pull-right col-sm-8">                                   
+                            
+                                <div class="pull-left col-sm-12">
+                                    <h3>@item.Item.Name</h3>
+                                </div>
+                                <div class="pull-right col-sm-12 jsformdiv" id="@item.OrderId">                                           
+                                    <form class="btn-group" role="group">
+                                                
+                                        <input type="submit" value="Påbörjad" id="begin+@item.OrderId" class="btn btn-default" />
+                                        <input type="submit" value="Klar" id="finnish+@item.OrderId" class="btn btn-default" />
+                                        <input type="submit" value="Hämtad" id="pickup+@item.OrderId" class="btn btn-default" />                                              
+                                    </form>
+                                </div>                                       
+                           
+                        </div>
+
+                    </div>
+                </div>
+
+                @*<div class="panel-body">
+                    <div class="pull-left col-sm-4">
+                        <h3>name</h3>
+                        <div class="col-sm-12">
+                            <h3>phonenumber</h3>
+                        </div>
+                    </div >
+                    <div class="pull-right col-sm-12 col-sm-7">
+                        <div class="pull-left col-sm-12 col-sm-6">
+                            <h3>itemname</h3>
+                        </div>
+                        <div class="pull-right col-sm-12 col-md-6">
+                            <form class="btn-group" role="group">
+                                <input type="submit" value="Påbörjad" id="begin+' + orderid + '" class="btn btn-default" />
+                                <input type="submit" value="Klar" id="finnish+' + orderid + '" class="btn btn-default" />
+                                <input type="submit" value="Hämtad" id="pickup+' + orderid + '" class="btn btn-default" />
+                            </form> 
+                        </div>
+                    </div>
+                </div>*@
+
+            }
+        </div>
+    </div>
+
+
+</div>
+
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/kitchen.js"></script>

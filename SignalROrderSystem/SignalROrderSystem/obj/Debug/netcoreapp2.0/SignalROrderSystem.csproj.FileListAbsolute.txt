@@ -1,0 +1,11 @@
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\bin\Debug\netcoreapp2.0\SignalROrderSystem.deps.json
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\bin\Debug\netcoreapp2.0\SignalROrderSystem.runtimeconfig.json
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\bin\Debug\netcoreapp2.0\SignalROrderSystem.runtimeconfig.dev.json
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\bin\Debug\netcoreapp2.0\SignalROrderSystem.dll
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\obj\Debug\netcoreapp2.0\SignalROrderSystem.csproj.CoreCompileInputs.cache
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\obj\Debug\netcoreapp2.0\SignalROrderSystem.AssemblyInfoInputs.cache
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\obj\Debug\netcoreapp2.0\SignalROrderSystem.AssemblyInfo.cs
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\bin\Debug\netcoreapp2.0\SignalROrderSystem.pdb
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\obj\Debug\netcoreapp2.0\SignalROrderSystem.dll
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\obj\Debug\netcoreapp2.0\SignalROrderSystem.pdb
+C:\Users\johan\OneDrive\Dokument\Prog17\Datakommunikation_O_Nätverk\Inlämning2\SignalROrderSystem\SignalROrderSystem\obj\Debug\netcoreapp2.0\SignalROrderSystem.csprojAssemblyReference.cache

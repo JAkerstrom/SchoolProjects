@@ -1,0 +1,28 @@
+﻿@model List<MenuItem>
+
+<h2>Menu Editor</h2>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        if (item.InStock())
+        {
+            <tr>
+                <td>@item.Name </td>
+                <td><button class="btn btn-sm" id="@item.Id">slut</button></td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>@item.Name </td>
+                <td><button class="btn btn-sm" id="@item.Id" disabled>slut</button></td>
+            </tr>
+        }
+
+
+    }
+</table>
+
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/editor.js"></script>
